@@ -9,7 +9,7 @@ Targets Node.js `20+`. Ships dual `ESM`/`CommonJS` builds and a first-class Nest
 ## Install
 
 ```bash
-npm install klix
+npm install @biggora/klix
 ```
 
 NestJS apps also need peer deps:
@@ -31,7 +31,7 @@ npm install @nestjs/common @nestjs/core reflect-metadata rxjs
 ## Plain Node.js
 
 ```ts
-import { createKlixClient } from 'klix';
+import { createKlixClient } from '@biggora/klix';
 
 const klix = createKlixClient({
   apiKey: process.env.KLIX_API_KEY!,
@@ -101,7 +101,7 @@ klix.webhooks.listDeliveries({ id: purchaseId, source_type: 'purchase' });
 SDK throws `KlixApiError`.
 
 ```ts
-import { KlixApiError } from 'klix';
+import { KlixApiError } from '@biggora/klix';
 
 try {
   await klix.balance.get();
@@ -134,11 +134,11 @@ const valid = verifyWebhookPayload(rawBodyBuffer, signatureHeader, webhook.publi
 
 ## NestJS
 
-Use `klix/nestjs` subpath export.
+Use `@biggora/klix/nestjs` subpath export.
 
 ```ts
 import { Module } from '@nestjs/common';
-import { KlixModule } from 'klix/nestjs';
+import { KlixModule } from '@biggora/klix/nestjs';
 
 @Module({
   imports: [
@@ -156,7 +156,7 @@ Async config:
 ```ts
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { KlixModule } from 'klix/nestjs';
+import { KlixModule } from '@biggora/klix/nestjs';
 
 @Module({
   imports: [
@@ -177,8 +177,8 @@ Inject client into services:
 
 ```ts
 import { Injectable } from '@nestjs/common';
-import { InjectKlixClient } from 'klix/nestjs';
-import type { KlixClient } from 'klix';
+import { InjectKlixClient } from '@biggora/klix/nestjs';
+import type { KlixClient } from '@biggora/klix';
 
 @Injectable()
 export class PaymentsService {
@@ -196,7 +196,7 @@ Use verifier service:
 import { Controller, Post, Req } from '@nestjs/common';
 import type { RawBodyRequest } from '@nestjs/common';
 import type { Request } from 'express';
-import { KlixSignatureVerifier } from 'klix/nestjs';
+import { KlixSignatureVerifier } from '@biggora/klix/nestjs';
 
 @Controller('klix')
 export class KlixCallbackController {

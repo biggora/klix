@@ -1,6 +1,6 @@
 {
   "name": "@biggora/klix",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "TypeScript SDK and NestJS adapter for Klix API.",
   "keywords": [
     "klix",
@@ -24,6 +24,13 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "nestjs": [
+        "dist/nest/index.d.ts"
+      ]
+    }
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -38,6 +45,7 @@
   },
   "files": [
     "dist",
+    "nestjs.d.ts",
     "README.md"
   ],
   "engines": {
