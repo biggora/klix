@@ -4,6 +4,10 @@
   "description": "TypeScript SDK and NestJS adapter for Klix API.",
   "license": "ISC",
   "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/biggora/klix.git"
+  },
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
