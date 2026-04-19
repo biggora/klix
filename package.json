@@ -1,5 +1,5 @@
 {
-  "name": "klix",
+  "name": "@biggora/klix",
   "version": "1.0.0",
   "description": "TypeScript SDK and NestJS adapter for Klix API.",
   "license": "ISC",
