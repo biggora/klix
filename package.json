@@ -2,6 +2,18 @@
   "name": "@biggora/klix",
   "version": "1.0.0",
   "description": "TypeScript SDK and NestJS adapter for Klix API.",
+  "keywords": [
+    "klix",
+    "payments",
+    "payment-gateway",
+    "payment-api",
+    "sdk",
+    "api-client",
+    "typescript",
+    "nodejs",
+    "nestjs",
+    "ecommerce"
+  ],
   "license": "ISC",
   "author": "",
   "repository": {
