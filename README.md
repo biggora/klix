@@ -127,7 +127,7 @@ const valid = await klix.verifySuccessCallback(rawBodyBuffer, signatureHeader);
 For webhook deliveries, Klix provides dedicated public key per webhook.
 
 ```ts
-import { verifyWebhookPayload } from 'klix';
+import { verifyWebhookPayload } from '@biggora/klix';
 
 const valid = verifyWebhookPayload(rawBodyBuffer, signatureHeader, webhook.public_key);
 ```

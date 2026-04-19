@@ -21,7 +21,6 @@ jobs:
         with:
           node-version: 24
           cache: npm
-          registry-url: https://registry.npmjs.org
 
       - name: Read package metadata
         id: package
