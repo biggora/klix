@@ -31,6 +31,9 @@
       ]
     }
   },
+  "publishConfig": {
+    "provenance": true
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
