@@ -1,4 +1,6 @@
-# klix
+# Klix
+
+[![Unit Tests](https://github.com/biggora/klix/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/biggora/klix/actions/workflows/unit-tests.yml)
 
 TypeScript SDK and NestJS adapter for [Klix API](https://developers.klix.app/api/).
 
