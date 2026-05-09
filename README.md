@@ -2,6 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@biggora/klix.svg)](https://www.npmjs.com/package/@biggora/klix)
 [![Unit Tests](https://github.com/biggora/klix/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/biggora/klix/actions/workflows/unit-tests.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 TypeScript SDK and NestJS adapter for [Klix API](https://developers.klix.app/api/).
 
