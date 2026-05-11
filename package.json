@@ -5,6 +5,9 @@
   "keywords": [
     "klix",
     "payments",
+    "checkout",
+    "webhooks",
+    "refunds",
     "payment-gateway",
     "payment-api",
     "sdk",
@@ -14,6 +17,10 @@
     "nestjs",
     "ecommerce"
   ],
+  "homepage": "https://github.com/biggora/klix#readme",
+  "bugs": {
+    "url": "https://github.com/biggora/klix/issues"
+  },
   "license": "MIT",
   "publishConfig": {
     "access": "public"
