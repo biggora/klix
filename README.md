@@ -20,6 +20,10 @@ NestJS apps also need peer deps:
 npm install @nestjs/common @nestjs/core reflect-metadata rxjs
 ```
 
+## Quick Start: Checkout
+
+Create a purchase, redirect the customer to `checkout_url`, then confirm the final state with a success callback or webhook before fulfilling the order.
+
 ## Features
 
 - Full current REST surface from Klix OpenAPI schema
@@ -62,6 +66,8 @@ const purchase = await klix.purchases.create({
 
 console.log(purchase.checkout_url);
 ```
+
+Use a durable order reference and store the returned purchase `id`. Klix can return asynchronous states for capture, charge, release, and refund operations, so webhook delivery is the safest place to finalize order state.
 
 ## Main API Surface
 
@@ -132,6 +138,19 @@ For webhook deliveries, Klix provides dedicated public key per webhook.
 import { verifyWebhookPayload } from '@biggora/klix';
 
 const valid = verifyWebhookPayload(rawBodyBuffer, signatureHeader, webhook.public_key);
+```
+
+Create a webhook from code when you want setup to be repeatable across environments:
+
+```ts
+const webhook = await klix.webhooks.create({
+  title: 'Production purchase events',
+  callback: 'https://example.com/api/klix/webhook',
+  all_events: false,
+  events: ['purchase.paid', 'purchase.payment_failure', 'payment.refunded'],
+});
+
+console.log(webhook.public_key);
 ```
 
 ## NestJS
@@ -211,10 +230,19 @@ export class KlixCallbackController {
 
     return { valid };
   }
+
+  @Post('webhook')
+  webhook(@Req() req: RawBodyRequest<Request>) {
+    const signature = String(req.headers['x-signature'] ?? '');
+    const webhookPublicKey = process.env.KLIX_WEBHOOK_PUBLIC_KEY!;
+    const valid = this.verifier.verifyWebhookPayload(req.rawBody ?? Buffer.alloc(0), signature, webhookPublicKey);
+
+    return { valid };
+  }
 }
 ```
 
-Enable raw body for callback verification:
+Enable raw body before registering callback or webhook routes:
 
 ### Express
 
