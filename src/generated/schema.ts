@@ -26,6 +26,8 @@ export interface paths {
          *     Bulk purchase products must be provided in `purchase.products` and must match the number of creditors. Creditors must be provided in `purchase.payment_method_details.pis_bulk_purchase`.
          *
          *     Payment Initiation Service (PIS) purchase creditors can be overridden by specifying the creditor details under the `purchase.payment_method_details.pis_purchase` key.
+         *
+         *     For PIS purchases, you can optionally provide debtor identification via `purchase.payment_method_details.pis_purchase.debtor.identification` (with `type`: `organisation` or `private`, and `scheme_name`). The identification value comes from `client.personal_code`. If provided, both are required; otherwise the request is rejected with a 400 response.
          */
         post: operations["purchases_create"];
         delete?: never;
@@ -966,7 +968,7 @@ export interface components {
             phone?: components["schemas"]["Phone"];
             /** @description Name and surname of client */
             full_name?: string;
-            /** @description Personal identification code of client */
+            /** @description Personal identification code of client. For Payment Initiation Service (PIS) purchases this value is also used as the debtor identification value when `purchase.payment_method_details.pis_purchase.debtor.identification` is provided. */
             personal_code?: string;
             street_address?: components["schemas"]["StreetAddress"];
             country?: components["schemas"]["Country"];
@@ -2807,7 +2809,8 @@ export interface operations {
                 /**
                  * @example {
                  *       "client": {
-                 *         "email": "test@test.com"
+                 *         "email": "test@test.com",
+                 *         "personal_code": "301135655"
                  *       },
                  *       "purchase": {
                  *         "products": [
@@ -2837,6 +2840,12 @@ export interface operations {
                  *             "creditor": {
                  *               "name": "Jenny Doe",
                  *               "iban": "LV55HABA1111111111113"
+                 *             },
+                 *             "debtor": {
+                 *               "identification": {
+                 *                 "type": "organisation",
+                 *                 "scheme_name": "COID"
+                 *               }
                  *             }
                  *           }
                  *         }
