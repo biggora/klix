@@ -69,6 +69,18 @@ console.log(purchase.checkout_url);
 
 Use a durable order reference and store the returned purchase `id`. Klix can return asynchronous states for capture, charge, release, and refund operations, so webhook delivery is the safest place to finalize order state.
 
+## First Payment Smoke
+
+Use this checklist when wiring a new integration or verifying credentials in a non-production environment:
+
+1. Set `KLIX_API_KEY` and `KLIX_BRAND_ID`, then create the smallest EUR purchase your account allows.
+2. Persist your local order id, the Klix purchase `id`, and the `checkout_url` returned by `purchases.create()`.
+3. Open `checkout_url` in a browser and complete the test payment flow.
+4. On `success_callback`, call `verifySuccessCallback(rawBody, signatureHeader)` and then read the purchase by id before marking the order paid.
+5. Also register a webhook for `purchase.paid` and `purchase.payment_failure`; use `verifyWebhookPayload()` with the webhook `public_key` and treat the webhook as the durable fulfillment signal.
+
+If the browser redirects before the webhook arrives, show a pending confirmation state to the buyer and poll `purchases.read(id)` from your server-side order page.
+
 ## Main API Surface
 
 ```ts
