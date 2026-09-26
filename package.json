@@ -70,16 +70,16 @@
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
-    "@nestjs/common": "^11.0.0",
-    "@nestjs/core": "^11.0.0",
+    "@nestjs/common": "^12.0.4",
+    "@nestjs/core": "^12.0.4",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
   },
   "devDependencies": {
-    "@nestjs/common": "^11.0.11",
-    "@nestjs/core": "^11.0.11",
-    "@nestjs/platform-express": "^11.0.11",
-    "@nestjs/testing": "^11.0.11",
+    "@nestjs/common": "^12.0.4",
+    "@nestjs/core": "^12.0.4",
+    "@nestjs/platform-express": "^12.0.4",
+    "@nestjs/testing": "^12.0.4",
     "@types/express": "^5.0.1",
     "@types/node": "^24.2.0",
     "@types/supertest": "^6.0.3",
@@ -90,15 +90,16 @@
     "supertest": "^7.1.1",
     "tsup": "^8.5.0",
     "typescript": "^5.8.3",
-    "vitest": "^4.1.0"
+    "vitest": "^4.1.11"
   },
   "overrides": {
     "esbuild": "0.28.1",
-    "js-yaml": "4.3.1",
-    "multer": "2.2.0",
+    "js-yaml": "4.3.2",
+    "multer": "2.4.0",
     "postcss": "8.5.25",
     "brace-expansion": "5.0.9",
     "minimatch": "10.2.6",
-    "nanoid": "3.3.18"
+    "nanoid": "3.3.18",
+    "qs": "6.16.0"
   }
 }
